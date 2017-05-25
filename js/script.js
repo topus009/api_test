@@ -1,6 +1,7 @@
 var hh_pre_url = 'https://api.hh.ru/areas/113';
 $.getJSON(hh_pre_url, function(data) {
 var hh_pre_arr = data.areas;
+
   var dropdown = document.createElement('div');
   document.getElementById('city').after(dropdown);
   dropdown.classList.add("dropdown");
@@ -8,6 +9,7 @@ var hh_pre_arr = data.areas;
   var option_label = $('#aaa');
 for (var i = 0; i<hh_pre_arr.length; i++) {
   var options = "<div class='option'><div class='option_label'>" + hh_pre_arr[i].name + "</div><div class='option_children'></div></div>";
+  // option_label.append(options);
   option_label.append(options);
 };
 var option_children_after = $('.dropdown .option_children .option .option_children');
@@ -24,6 +26,25 @@ for (var i = 0; i<hh_pre_arr.length; i++) {
 
 // =============================================================================
 setTimeout(function(){
+
+
+  var moscow = document.querySelector('.dropdown > .option_children > .option:nth-child(21) .option_label');
+  var spb = document.querySelector('.dropdown > .option_children > .option:nth-child(40) .option_label');
+  moscow.setAttribute('id','21');
+  spb.setAttribute('id','40');
+  spb.addEventListener('click',function(e){
+    var city_text = e.target.innerText;
+    var iframe = document.getElementById("iframe");
+    var iframe_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDRLAUBlx2U5rRQHff5XseZM3WX78kk2-Y&q=" + city_text;
+    iframe.setAttribute('src',iframe_url);
+});
+  moscow.addEventListener('click',function(e){
+    var city_text = e.target.innerText;
+    var iframe = document.getElementById("iframe");
+    var iframe_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDRLAUBlx2U5rRQHff5XseZM3WX78kk2-Y&q=" + city_text;
+    iframe.setAttribute('src',iframe_url);
+});
+
   var target_city = document.getElementsByClassName('target_city');
   for (var i = 0; i<target_city.length; i++){
     target_city[i].addEventListener('click',function(e){
@@ -32,7 +53,6 @@ setTimeout(function(){
       var subject_name = e.target.parentNode.parentNode.previousSibling.innerText;
       document.getElementById('city').addEventListener('onkeyup',function(e){
         subject_name = e.target.value;
-        console.log(subject_name);
         return subject_name;
       });
       var subject_name_PLUS = subject_name.replace(/\s/g,'+');
@@ -41,7 +61,6 @@ setTimeout(function(){
 // =============================================================================
       var iframe = document.getElementById("iframe");
       var iframe_url = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDRLAUBlx2U5rRQHff5XseZM3WX78kk2-Y&q=" + subject_name_PLUS + "," + city_text;
-      console.log(iframe_url);
       iframe.setAttribute('src',iframe_url);
     });
 

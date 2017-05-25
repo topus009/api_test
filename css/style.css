@@ -27,6 +27,8 @@ h3 {
   flex-direction: row-reverse;
   justify-content: center;
   max-height: 94vh;
+  height: 94vh;
+
 }
 .flex-block div h3 {
   text-align: center;
