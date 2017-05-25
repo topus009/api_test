@@ -77,8 +77,6 @@ function loadData() {
   var nytimesUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + hh_text + '&sort=newest&api-key=3abc9a3d23e60b38c21b4ab9b0a91c07:17:69911633'
   $.getJSON(nytimesUrl, function(data) {
 
-    nytHeaderElem.text('Статьи\nNEW-YORK TIMES');
-
     articles = data.response.docs;
     for (var i = 0; i < articles.length; i++) {
       var article = articles[i];
@@ -115,14 +113,13 @@ function loadData() {
   // ============================================================= load HeadHuner
   var hh_area = "113";
   var hh_name = "Россия";
+  var hh_per_page = "100";
   var hh_city = document.getElementById('city').getAttribute('data_city_id');
-  console.log(hh_city);
 
-  var hh_url = 'https://api.hh.ru/vacancies?text=' + hh_text + '&name=' + hh_name + '&area.id=' + hh_city;
+  var hh_url = 'https://api.hh.ru/vacancies?text=' + hh_text + '&area=' + hh_area + '&name=' + hh_name + '&area.id=' + hh_city + '&per_page=' + hh_per_page;
   $.getJSON(hh_url, function(data) {
 
     var hh_arr = data.items;
-    hhHearerElem.text('Вакансии на\nHEAD HUNTER\n(найдено ' + hh_arr.length + ')');
 
     for (var i = 0; i < hh_arr.length; i++) {
 
@@ -133,7 +130,7 @@ function loadData() {
         hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>' + 'от ' + hh_arr[i].salary.from + ' ' + hh_arr[i].salary.currency + '</p></li>');
       }
       else if (hh_arr[i].salary['from'] === null) {
-        hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>' + 'до ' + hh_arr[i].salary.from + ' ' + hh_arr[i].salary.currency + '</p></li>');
+        hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>' + 'до ' + hh_arr[i].salary.to + ' ' + hh_arr[i].salary.currency + '</p></li>');
       }
       else {
         hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>' + 'от ' + hh_arr[i].salary.from + ' до ' + hh_arr[i].salary.to + ' ' + hh_arr[i].salary.currency + '</p></li>');
@@ -161,75 +158,3 @@ function loadData() {
 };
 
 $('#form-container').submit(loadData);
-
-// loadData();
-// $('body').append('<img class="bgimg" src="http://3.bp.blogspot.com/-Gf7kdx_Snf0/UphofDlNzZI/AAAAAAAADNo/EvRpi5qsQqA/s1600/BulkJar.comBulkJar.com-Hot-Ass-Wallpapers-freehd.BulkJar.com14-BulkJar.comBulkJar.com_.jpg">');
-
-// ============================ Wiki =================================
-// var url = "http://ru.wikipedia.org/w/api.php?action=opensearch&search="
-//           + city_val
-//           + '&format=json&callback=?';
-//
-//           $.ajax( {
-//               url: 'http://en.wikipedia.org/w/api.php',
-//               data: {
-//                   action: 'query',
-//                   meta: 'tokens',
-//                   format: 'json',
-//                   origin: 'http://www.mediawiki.org'
-//               },
-//               xhrFields: {
-//                   withCredentials: true
-//               },
-//               dataType: 'json'
-//           } ).done( function ( data ) {
-//               $.ajax( {
-//                   url: 'http://en.wikipedia.org/w/api.php?origin=https://www.mediawiki.org',
-//                   method: 'POST',
-//                   data: {
-//                       action: 'options',
-//                       format: 'json',
-//                       token: data.query.tokens.csrftoken,
-//                       optionname: 'userjs-test',
-//                       optionvalue: 'Hello world!'
-//                   },
-//                   xhrFields: {
-//                       withCredentials: true
-//                   },
-//                   dataType: 'json'
-//               } );
-//           } );
-
-// ============================ Wiki-end ==============================
-// ====================== NY ===========================================
-// var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-// url += '?' + $.param({
-//   'api-key': "c71d09ae04f54de58afa7756a63aec24",
-//   'q': "moscow",
-//   'begin_date': "20170519",
-//   'end_date': "20170519"
-// });
-// $.getJSON(url, function(data) {
-//   console.log(data);
-//   var len = data['response']['docs'].length;
-//
-//     for (var i = 0; i<len; i++) {
-//       var data_url = data['response']['docs'][i]['web_url'];
-//       console.log(data_url);
-//       $('#nytimes-articles').append("<br/><br/>" + data_url);
-//     }
-// });
-
-// $.ajax({
-//   url: url,
-//   method: 'GET',
-// }).done(function(result) {
-//   var len = result['response']['docs'].length;
-//   console.log(result);
-//   for (var i = 0; i<len; i++) {
-//     console.log(result['response']['docs'][i]['web_url']);
-//   }
-// }).fail(function(err) {
-//   throw err;
-// });
-// =========================== NY-end ================================

@@ -16,13 +16,17 @@ h3 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  z-index: -1;
+  width: 100vw;
+  height: 106vh;
   opacity: 1;
+  z-index: -1;
+  background-repeat: round;
 }
 .flex-block {
   display: flex;
   flex-direction: row-reverse;
+  justify-content: center;
+  max-height: 94vh;
 }
 .flex-block div h3 {
   text-align: center;
@@ -34,17 +38,17 @@ h3 {
 .hh-container {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 10px;
-  /*width: 30%;*/
+  overflow-y: overlay;
 }
 .wikipedia-container {
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.7);
-  /*width: 15%;*/
+  overflow-y: overlay;
 }
 .nytimes-container {
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.7);
-  /*width: 55%;*/
+  overflow-y: overlay;
 }
 /* =========================== */
 .nytimes-container .article-list .article p {
@@ -65,7 +69,7 @@ h3 {
 }
 .hh-container .vacancy-list li p {
   font-size: 12px;
-  margin: 0 20px;
+  margin: 0 0 0 10px;
 }
 .hh-container .vacancy-list li {
   list-style: none;
@@ -84,13 +88,18 @@ h3 {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  font-size: 20px;
+}
+.form-container input {
+  font-size: 20px;
 }
 #submit-btn {
-  font-size: 20px;
   padding: 0 10px;
+  font-size: 20px;
+
 }
 iframe {
-  margin-top: 10px;
+  /*margin-top: 10px;*/
 }
 /* ========================================================================== */
 .dropdown {
