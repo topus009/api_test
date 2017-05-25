@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Api test</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/favorite-circle-yellow-128.png" type="image/png">
+  </head>
+
+  <body>
+
+    <form id="form-container" class="form-container">
+      <label for="street">Улица: </label>
+      <input type="text" id="street" value="ленинский проспект">
+      <label for="city">Город: </label>
+      <input type="text" id="city" value="">
+      <label for="vacancy">Вакансия: </label>
+      <input type="text" id="vacancy" value="html">
+
+      <button id="submit-btn">Поиск</button>
+    </form>
+
+    <hr>
+
+    <div class="wikipedia-container">
+      <h3 id="wikipedia-header">Ссылки из Википедии</h3>
+      <ul id="wikipedia-links">Введите название города, чтобы увидеть статьи о нем из WIKIPEDIA</ul>
+    </div>
+
+    <div class="nytimes-container">
+      <h3 id="nytimes-header">Статьи из New York Times</h3>
+      <ul id="nytimes-articles" class="article-list">Введите название города, чтобы увидеть новости о нем в NEW-YORK TIMES</ul>
+    </div>
+
+    <div class="hh-container">
+      <h3 id="hh-header">Вакансии на HEAD HUNTER</h3>
+      <ul id="hh-vacancies" class="vacancy-list">Введите желаемую должность, чтобы увидеть подходящие вакансии на HEAD HUNTER</ul>
+    </div>
+
+    <iframe id="iframe" class "iframe" width="600" height="450"
+            frameborder="0" style="border:0"
+            allowfullscreen>
+    </iframe>
+
+
+
+
+
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+
+  </body>
+
+</html>

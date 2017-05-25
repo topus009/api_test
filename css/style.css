@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #CCC;
+  font-family: sans-serif;
+}
+.bgimg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  opacity: 1;
+}
+.wikipedia-container {
+  float: right;
+  width: 290px;
+  padding: 10px;
+  margin-right: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.nytimes-container {
+  padding: 10px;
+  margin-right: 300px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.article-list {
+  margin: 0;
+  padding: 0;
+}
+.article {
+  list-style-type: none;
+  padding: 10px;
+  border-top: 1px solid #CCC;
+}
+.article:first-child {
+  border-top: none;
+}
+/* ========================================================================== */
+.dropdown {
+    color: black;
+    cursor: default;
+    display: inline-block;
+    position: relative;
+    width: 233px;
+    text-align: center;
+    border: 1px solid black;
+    margin-left: 20px;
+}
+.option {
+    position: relative;
+    text-align: left;
+}
+.option_label {
+    background-color: white;
+    padding: 1px 10px;
+    position: relative;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+.option_label:hover {
+    background-color: #b9b9b9;
+}
+.option_children {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    font-size: 11px;
+    border: 1px solid black;
+}
+.dropdown > .option_children {
+    left: -1px;
+    top: 100%;
+    width: calc(100% + 2px);
+}
+.option:hover > .option_children,
+.option_children:hover,
+.option_label:hover ~ .option_children {
+    display: block;
+}
