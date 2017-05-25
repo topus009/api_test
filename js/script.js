@@ -30,6 +30,11 @@ setTimeout(function(){
       var city_text = e.target.innerText;
       var city_id = e.target.id;
       var subject_name = e.target.parentNode.parentNode.previousSibling.innerText;
+      document.getElementById('city').addEventListener('onkeyup',function(e){
+        subject_name = e.target.value;
+        console.log(subject_name);
+        return subject_name;
+      });
       var subject_name_PLUS = subject_name.replace(/\s/g,'+');
       document.getElementById('city').setAttribute('data_city_id',city_id);
       $('#city').val(city_text);
@@ -69,10 +74,10 @@ function loadData() {
   body.append('<img class="bgimg" src="' + streetviewUrl + '">');
 
   // ================================================== load nytimes
-  var nytimesUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + city_val + '&sort=newest&api-key=3abc9a3d23e60b38c21b4ab9b0a91c07:17:69911633'
+  var nytimesUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + hh_text + '&sort=newest&api-key=3abc9a3d23e60b38c21b4ab9b0a91c07:17:69911633'
   $.getJSON(nytimesUrl, function(data) {
 
-    nytHeaderElem.text('Статьи NEW-YORK TIMES (' + city_val + ")");
+    nytHeaderElem.text('Статьи\nNEW-YORK TIMES');
 
     articles = data.response.docs;
     for (var i = 0; i < articles.length; i++) {
@@ -86,7 +91,7 @@ function loadData() {
   });
 
   // ====================================================== load wikipedia data
-  var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + city_val + '&format=json&callback=wikiCallback';
+  var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + hh_text + '&format=json&callback=wikiCallback';
   var wikiRequestTimeout = setTimeout(function() {
     wikiElem.text("Ошибка загрузки статей из WIKIPEDIA");
   }, 4000);
@@ -117,21 +122,21 @@ function loadData() {
   $.getJSON(hh_url, function(data) {
 
     var hh_arr = data.items;
-    hhHearerElem.text('Вакансии' + hh_text + ' на HEAD HUNTER (найдено ' + hh_arr.length + ')');
+    hhHearerElem.text('Вакансии на\nHEAD HUNTER\n(найдено ' + hh_arr.length + ')');
 
     for (var i = 0; i < hh_arr.length; i++) {
 
       if (hh_arr[i].salary === null) {
-         hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>Зарплата: ' + 'по договоренности' + '</p></li>');
+         hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>' + 'по договоренности' + '</p></li>');
       }
       else if (hh_arr[i].salary['to'] === null) {
-        hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>Зарплата: ' + 'от ' + hh_arr[i].salary.from + ' ' + hh_arr[i].salary.currency + '</p></li>');
+        hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>' + 'от ' + hh_arr[i].salary.from + ' ' + hh_arr[i].salary.currency + '</p></li>');
       }
       else if (hh_arr[i].salary['from'] === null) {
-        hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>Зарплата: ' + 'до ' + hh_arr[i].salary.from + ' ' + hh_arr[i].salary.currency + '</p></li>');
+        hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>' + 'до ' + hh_arr[i].salary.from + ' ' + hh_arr[i].salary.currency + '</p></li>');
       }
       else {
-        hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>Зарплата: ' + 'от ' + hh_arr[i].salary.from + ' до ' + hh_arr[i].salary.to + ' ' + hh_arr[i].salary.currency + '</p></li>');
+        hhElem.append('<li><a href="'+ hh_arr[i].alternate_url+ '">'+ hh_arr[i].name+ '</a><p>' + 'от ' + hh_arr[i].salary.from + ' до ' + hh_arr[i].salary.to + ' ' + hh_arr[i].salary.currency + '</p></li>');
       }
     };
   }).error(function(error) {

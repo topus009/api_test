@@ -1,9 +1,16 @@
-* {
-  box-sizing: border-box;
-}
+
 body {
-  background-color: #CCC;
+  background-color: black;
   font-family: sans-serif;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  font-size: 14px;
+}
+h3 {
+  height: 3em;
 }
 .bgimg {
   position: fixed;
@@ -13,17 +20,36 @@ body {
   z-index: -1;
   opacity: 1;
 }
-.wikipedia-container {
-  float: right;
-  width: 290px;
-  padding: 10px;
-  margin-right: 10px;
+.flex-block {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.flex-block div h3 {
+  text-align: center;
+}
+.wikipedia-container ul {
+  padding: 0;
+}
+/* =========================== */
+.hh-container {
   background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  /*width: 30%;*/
+}
+.wikipedia-container {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  /*width: 15%;*/
 }
 .nytimes-container {
   padding: 10px;
-  margin-right: 300px;
   background-color: rgba(255, 255, 255, 0.7);
+  /*width: 55%;*/
+}
+/* =========================== */
+.nytimes-container .article-list .article p {
+  font-size: 12px;
+  margin: 4px 0 4px 10px;
 }
 .article-list {
   margin: 0;
@@ -31,11 +57,40 @@ body {
 }
 .article {
   list-style-type: none;
-  padding: 10px;
-  border-top: 1px solid #CCC;
+  border-top: 1px solid black;
+  padding-top: 4px;
 }
 .article:first-child {
   border-top: none;
+}
+.hh-container .vacancy-list li p {
+  font-size: 12px;
+  margin: 0 20px;
+}
+.hh-container .vacancy-list li {
+  list-style: none;
+}
+.hh-container .vacancy-list li a {
+  color: red;
+}
+.hh-container .vacancy-list {
+  padding-left: 0;
+}
+.form-container > label {
+  color: white;
+}
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#submit-btn {
+  font-size: 20px;
+  padding: 0 10px;
+}
+iframe {
+  margin-top: 10px;
 }
 /* ========================================================================== */
 .dropdown {
@@ -46,7 +101,6 @@ body {
     width: 233px;
     text-align: center;
     border: 1px solid black;
-    margin-left: 20px;
 }
 .option {
     position: relative;
