@@ -40,17 +40,17 @@ h3 {
 .hh-container {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 10px;
-  overflow-y: overlay;
+  overflow-y: scroll;
 }
 .wikipedia-container {
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.7);
-  overflow-y: overlay;
+  overflow-y: scroll;
 }
 .nytimes-container {
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.7);
-  overflow-y: overlay;
+  overflow-y: scroll;
 }
 /* =========================== */
 .nytimes-container .article-list .article p {
