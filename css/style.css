@@ -18,16 +18,23 @@ h3 {
   left: 0;
   width: 100vw;
   height: 106vh;
+  background-repeat: round;
   opacity: 1;
   z-index: -1;
-  background-repeat: round;
 }
 .flex-block {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  max-height: 94vh;
+          flex-direction: row-reverse;
+          justify-content: center;
   height: 94vh;
+  max-height: 94vh;
 
 }
 .flex-block div h3 {
@@ -38,42 +45,42 @@ h3 {
 }
 /* =========================== */
 .hh-container {
-  background-color: rgba(255, 255, 255, 0.7);
   padding: 10px;
-  overflow-y: overlay;
   padding-right: 30px;
+  overflow-y: overlay;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .wikipedia-container {
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
   overflow-y: overlay;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .nytimes-container {
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
-  overflow-y: overlay;
   padding-right: 30px;
+  overflow-y: overlay;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 /* =========================== */
 .nytimes-container .article-list .article p {
-  font-size: 12px;
   margin: 4px 0 4px 10px;
+  font-size: 12px;
 }
 .article-list {
   margin: 0;
   padding: 0;
 }
 .article {
-  list-style-type: none;
-  border-top: 1px solid black;
   padding-top: 4px;
+  border-top: 1px solid black;
+  list-style-type: none;
 }
 .article:first-child {
   border-top: none;
 }
 .hh-container .vacancy-list li p {
-  font-size: 12px;
   margin: 0 0 0 10px;
+  font-size: 12px;
 }
 .hh-container .vacancy-list li {
   list-style: none;
@@ -88,9 +95,15 @@ h3 {
   color: white;
 }
 .form-container {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+          align-items: center;
+          justify-content: space-between;
   margin-bottom: 10px;
   font-size: 20px;
 }
@@ -102,27 +115,25 @@ h3 {
   font-size: 20px;
 
 }
-iframe {
-  /*margin-top: 10px;*/
-}
 /* ========================================================================== */
 .dropdown {
-    color: black;
-    cursor: default;
     display: inline-block;
     position: relative;
     width: 233px;
-    text-align: center;
     border: 1px solid black;
+    color: black;
+    text-align: center;
+    cursor: default;
 }
 .option {
     position: relative;
     text-align: left;
 }
 .option_label {
-    background-color: white;
-    padding: 1px 10px;
+    -webkit-transition: background-color 0.2s;
     position: relative;
+    padding: 1px 10px;
+    background-color: white;
     white-space: nowrap;
     transition: background-color 0.2s;
 }
@@ -132,14 +143,14 @@ iframe {
 .option_children {
     display: none;
     position: absolute;
-    left: 100%;
     top: 0;
-    font-size: 11px;
+    left: 100%;
     border: 1px solid black;
+    font-size: 11px;
 }
 .dropdown > .option_children {
-    left: -1px;
     top: 100%;
+    left: -1px;
     width: calc(100% + 2px);
 }
 .option:hover > .option_children,
